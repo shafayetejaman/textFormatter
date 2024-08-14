@@ -1,13 +1,13 @@
 import React from 'react';
 
-export default function NavBar({ name = "NavBar" }, props)
+export default function NavBar(props)
 {
     return (
         <header>
             <nav className="navbar navbar-expand-lg bg-dark">
                 <div className="container-fluid">
                     <a className="navbar-brand text-white" href="/">
-                        <span><i className="fa-solid fa-envelope-open-text me-2"></i>{name}</span>
+                        <span><i className="fa-solid fa-envelope-open-text me-2"></i>{props.name}</span>
                     </a>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>

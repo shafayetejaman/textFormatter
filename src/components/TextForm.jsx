@@ -47,7 +47,7 @@ export function TextForm(props)
 
     };
 
-    const removeMidSpace = (text) =>
+    const handelMidSpace = (text) =>
     {
         let newText = "";
 
@@ -55,9 +55,9 @@ export function TextForm(props)
         {
             if (/[.?!]/.test(text[i + 1]) && text[i] === " ") continue;
 
-            if (/[.?!]/.test(text[i]) && text[i + 1] !== " ") newText += " ";
-
             newText += text[i];
+
+            if (/[.?!]/.test(text[i]) && text[i + 1] !== " ") newText += " ";
         }
 
         return newText + text.slice(-1);
@@ -66,9 +66,19 @@ export function TextForm(props)
     const formateText = () =>
     {
         // removing extra space
-        const text = removeMidSpace(state.text.split(/[ ]+/).join(" ").trim());
+        const text = handelMidSpace(state.text.split(/[ ]+/).join(" ").trim());
 
-        setText(text);
+        setText(toUpperSentence(text));
+    };
+
+    const copyToClipBoard = () =>
+    {
+        navigator.clipboard.writeText(state.text);
+    };
+
+    const clearText = () =>
+    {
+        setText('')
     };
 
 
@@ -87,11 +97,11 @@ export function TextForm(props)
                     </span>
                     <span className={state.text.length === 0 ? "border-0 p-2 bg-gray" : "btn btn-primary"}>
                         <i className="fa-solid fa-clipboard"></i>
-                        <button disabled={state.text.length === 0} onClick={formateText} className="border-0 p-0 text-white ps-1 bg-transparent">Copy</button>
+                        <button disabled={state.text.length === 0} onClick={copyToClipBoard} className="border-0 p-0 text-white ps-1 bg-transparent">Copy</button>
                     </span>
                     <span className={state.text.length === 0 ? "border-0 p-2 bg-gray" : "btn btn-danger"}>
                         <i className="fa-solid fa-broom"></i>
-                        <button disabled={state.text.length === 0} onClick={formateText} className="border-0 p-0 text-white ps-1 bg-transparent">Clear</button>
+                        <button disabled={state.text.length === 0} onClick={clearText} className="border-0 p-0 text-white ps-1 bg-transparent">Clear</button>
                     </span>
                 </div>
             </section>
