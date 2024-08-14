@@ -112,6 +112,7 @@ export function TextForm(props)
     {
         const res = await formateUsingAI(state.text);
         setText(res.slice(1, -1));
+        props.showAlert("I have Improved your text", "success");
     };
 
 
