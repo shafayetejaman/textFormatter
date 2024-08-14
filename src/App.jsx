@@ -5,14 +5,13 @@ import Footer from './components/Footer';
 import React, { useState } from 'react';
 import Alert from './components/Alert';
 
-
 function App()
 {
   // eslint-disable-next-line
   const [mode, setMode] = useState("dark");
   const [alert, setAlert] = useState(null);
 
-  const showAlert = (text,alertType) =>
+  const showAlert = (text, alertType) =>
   {
     setAlert({
       text: text,

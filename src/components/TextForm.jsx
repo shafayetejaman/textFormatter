@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import formateUsingAI from './AIFormate';
 
 export function TextForm(props)
 {
@@ -83,7 +84,7 @@ export function TextForm(props)
     const clearText = () =>
     {
         setText('');
-
+        document.querySelector(".text-area").value = "";
         props.showAlert("Cleared", "warning");
     };
 
@@ -107,13 +108,18 @@ export function TextForm(props)
         else return { color: "white" };
     };
 
+    const callAI = async () =>
+    {
+        const res = await formateUsingAI(state.text);
+        setText(res.slice(1, -1));
+    };
+
 
     return (
         <main className='container'>
             <section className='m-auto my-5'>
                 <textarea
-                    className='w-100 text-white border-0 rounded-3 fs-5' style={textAreaColor()} rows={10}
-                    value={state.text}
+                    className='text-area w-100 text-white border-0 rounded-3 fs-5' style={textAreaColor()} rows={10}
                     onChange={handelChanges}
                 ></textarea>
                 <div className='d-flex gap-2 my-1'>
@@ -124,6 +130,10 @@ export function TextForm(props)
                     <span className={state.text.length === 0 ? "border-0 p-2 bg-gray" : "btn btn-primary"}>
                         <i className="fa-solid fa-clipboard"></i>
                         <button disabled={state.text.length === 0} style={btnTextColor()} onClick={copyToClipBoard} className="border-0 p-0 ps-1 bg-transparent">Copy</button>
+                    </span>
+                    <span className={state.text.length === 0 ? "border-0 p-2 bg-gray" : "btn btn-info text-white"}>
+                        <i className="fa-solid fa-brain"></i>
+                        <button disabled={state.text.length === 0} style={btnTextColor()} onClick={callAI} className="border-0 p-0 ps-1 bg-transparent">AI</button>
                     </span>
                     <span className={state.text.length === 0 ? "border-0 p-2 bg-gray" : "btn btn-danger"}>
                         <i className="fa-solid fa-broom"></i>
