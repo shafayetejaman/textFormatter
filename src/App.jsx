@@ -10,6 +10,21 @@ function App()
 {
   // eslint-disable-next-line
   const [mode, setMode] = useState("dark");
+  const [alert, setAlert] = useState(null);
+
+  const showAlert = (text,alertType) =>
+  {
+    setAlert({
+      text: text,
+      alertType: alertType,
+    });
+
+    setTimeout(() =>
+    {
+      setAlert(null);
+    }, 2500);
+  };
+
   const toggleMode = () =>
   {
     if (mode === "dark")
@@ -24,12 +39,16 @@ function App()
     }
   };
 
+
+
   return (
 
     <div className='App'>
       <NavBar name="TextFormatter" mode={mode} toggleMode={toggleMode} />
-      <Alert />
-      <TextForm mode={mode} />
+
+      <Alert alert={alert} />
+
+      <TextForm mode={mode} showAlert={showAlert} />
       <Footer mode={mode} />
     </div>
 

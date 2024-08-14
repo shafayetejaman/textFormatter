@@ -5,7 +5,7 @@ export function TextForm(props)
     const [state, setState] = useState({
         text: "",
         wordCount: 0,
-        sentenceCount: 0
+        sentenceCount: 0,
     });
 
     const setText = (text) =>
@@ -69,16 +69,42 @@ export function TextForm(props)
         const text = handelMidSpace(state.text.split(/[ ]+/).join(" ").trim());
 
         setText(toUpperSentence(text));
+
+        props.showAlert("Text Formatted!", "success");
     };
 
     const copyToClipBoard = () =>
     {
         navigator.clipboard.writeText(state.text);
+
+        props.showAlert("Copied to clipboard!", "success");
     };
 
     const clearText = () =>
     {
-        setText('')
+        setText('');
+
+        props.showAlert("Cleared", "warning");
+    };
+
+    const textAreaColor = () =>
+    {
+        if (props.mode === "dark")
+        {
+            return { background: "#212529" };
+        }
+        else
+        {
+            return { background: "rgb(10, 88, 202)" };
+        }
+    };
+
+    const btnTextColor = () =>
+    {
+        if (props.mode === "dark") return { color: "white" };
+
+        if (state.text.length === 0) return { color: "black" };
+        else return { color: "white" };
     };
 
 
@@ -86,28 +112,28 @@ export function TextForm(props)
         <main className='container'>
             <section className='m-auto my-5'>
                 <textarea
-                    className='w-100 bg-dark text-white border-0 rounded-3 fs-5' rows={10}
+                    className='w-100 text-white border-0 rounded-3 fs-5' style={textAreaColor()} rows={10}
                     value={state.text}
                     onChange={handelChanges}
                 ></textarea>
                 <div className='d-flex gap-2 my-1'>
                     <span className={state.text.length === 0 ? "border-0 p-2 bg-gray" : "btn btn-success"}>
                         <i className="fa-solid fa-wand-sparkles"></i>
-                        <button disabled={state.text.length === 0} onClick={formateText} className="border-0 p-0 text-white ps-1 bg-transparent">Formate</button>
+                        <button disabled={state.text.length === 0} style={btnTextColor()} onClick={formateText} className="border-0 p-0 ps-1 bg-transparent">Formate</button>
                     </span>
                     <span className={state.text.length === 0 ? "border-0 p-2 bg-gray" : "btn btn-primary"}>
                         <i className="fa-solid fa-clipboard"></i>
-                        <button disabled={state.text.length === 0} onClick={copyToClipBoard} className="border-0 p-0 text-white ps-1 bg-transparent">Copy</button>
+                        <button disabled={state.text.length === 0} style={btnTextColor()} onClick={copyToClipBoard} className="border-0 p-0 ps-1 bg-transparent">Copy</button>
                     </span>
                     <span className={state.text.length === 0 ? "border-0 p-2 bg-gray" : "btn btn-danger"}>
                         <i className="fa-solid fa-broom"></i>
-                        <button disabled={state.text.length === 0} onClick={clearText} className="border-0 p-0 text-white ps-1 bg-transparent">Clear</button>
+                        <button disabled={state.text.length === 0} style={btnTextColor()} onClick={clearText} className="border-0 p-0 ps-1 bg-transparent">Clear</button>
                     </span>
                 </div>
             </section>
             <section className="my-3 text-white" style={{ display: state.text ? "block" : "none" }}>
                 <h5>Sample Text:</h5>
-                <p className="m-auto p-2 bg-dark rounded-3 fs-4 text-break text-start" style={{ whiteSpace: "pre-wrap" }}>{state.text}</p>
+                <p className="m-auto p-2 rounded-3 fs-4 text-break text-start" style={textAreaColor()}>{state.text}</p>
                 <h6 className="text-start my-3">Word: {state.wordCount} Sentence: {state.sentenceCount}</h6>
             </section>
 
