@@ -15,7 +15,7 @@ export async function getGroqChatCompletion(str)
         messages: [
             {
                 role: "user",
-                content: `"${str}" correct the flowing text and only give the correct text as output`,
+                content: `"${str}" correct the flowing text without changing the meaning and only give the correct text as output`,
             },
         ],
         model: "llama3-8b-8192",
