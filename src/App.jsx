@@ -39,14 +39,12 @@ function App()
   };
 
 
-
   return (
 
     <div className='App'>
       <NavBar name="TextFormatter" mode={mode} toggleMode={toggleMode} />
 
       <Alert alert={alert} />
-
       <TextForm mode={mode} showAlert={showAlert} />
       <Footer mode={mode} />
     </div>

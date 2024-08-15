@@ -120,11 +120,10 @@ export function TextForm(props)
         document.querySelector(".ai-btn").style.display = "block";
         document.querySelector(".spinner").style.display = "none";
     };
-    
-    // eslint-disable-next-line
+
 
     return (
-        
+
         <main className='container'>
             <section className='m-auto my-5'>
                 <textarea
@@ -132,34 +131,34 @@ export function TextForm(props)
                     onChange={handelChanges}
                 ></textarea>
                 <div className='d-flex gap-2 my-1'>
-                    <a onClick={state.text.length === 0 ? () => {} : formateText}>
+                    <button onClick={state.text.length === 0 ? () => {} : formateText} style={{ all: "unset" }}>
                         <span className={state.text.length === 0 ? "border-0 p-2 bg-gray" : "btn btn-success"}>
                             <i className="fa-solid fa-wand-sparkles"></i>
                             <button disabled={state.text.length === 0} style={btnTextColor()} className="border-0 p-0 ps-1 bg-transparent">Formate</button>
                         </span>
-                    </a>
-                    <a onClick={state.text.length === 0 ? () => {} : copyToClipBoard}>
+                    </button>
+                    <button onClick={state.text.length === 0 ? () => {} : copyToClipBoard} style={{ all: "unset" }}>
                         <span className={state.text.length === 0 ? "border-0 p-2 bg-gray" : "btn btn-primary"}>
                             <i className="fa-solid fa-clipboard"></i>
                             <button disabled={state.text.length === 0} style={btnTextColor()} className="border-0 p-0 ps-1 bg-transparent">Copy</button>
                         </span>
-                    </a>
-                    <a onClick={state.text.length === 0 ? () => {} : callAI} className="ai-btn">
+                    </button>
+                    <button onClick={state.text.length === 0 ? () => {} : callAI} className="ai-btn" style={{ all: "unset" }}>
                         <span className={state.text.length === 0 ? "border-0 p-2 bg-gray" : "btn btn-info text-white"}>
                             <i className={`fa-solid fa-brain text-${state.text.length === 0 ? "dark" : "white"}`}></i>
                             <button disabled={state.text.length === 0} style={btnTextColor()} className="border-0 p-0 ps-1 bg-transparent">AI</button>
                         </span>
-                    </a>
+                    </button>
                     <button className="spinner btn btn-info text-white" type="button" disabled style={{ display: "none" }}>
                         <span className="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
                     </button>
 
-                    <a onClick={state.text.length === 0 ? () => {} : clearText}>
+                    <button onClick={state.text.length === 0 ? () => {} : clearText} style={{ all: "unset" }}>
                         <span className={state.text.length === 0 ? "border-0 p-2 bg-gray" : "btn btn-danger"}>
                             <i className="fa-solid fa-broom"></i>
                             <button disabled={state.text.length === 0} style={btnTextColor()} className="border-0 p-0 ps-1 bg-transparent">Clear</button>
                         </span>
-                    </a>
+                    </button>
                 </div>
 
             </section>
