@@ -114,15 +114,17 @@ export function TextForm(props)
         document.querySelector(".spinner").style.display = "block";
 
         const res = await formateUsingAI(state.text);
-        setText(res.slice(1, -1));
+        setText(res);
         props.showAlert("I have Improved your text", "success");
 
         document.querySelector(".ai-btn").style.display = "block";
         document.querySelector(".spinner").style.display = "none";
     };
-
+    
+    // eslint-disable-next-line
 
     return (
+        
         <main className='container'>
             <section className='m-auto my-5'>
                 <textarea

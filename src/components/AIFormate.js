@@ -15,7 +15,7 @@ export async function getGroqChatCompletion(str)
         messages: [
             {
                 role: "user",
-                content: `"${str}" correct the flowing text without changing the meaning and only give the correct text as output`,
+                content: `You are a text formatter who corrects all the grammatical and spelling mistake of given text. You should also add "?,!." if needed. you should not change the meaning of the text. Do not hallucinate. I need to copy the response text, so you must only give the correct text as output nothing else. Do not give the response in "" . Here is the text "${str}"`,
             },
         ],
         model: "llama3-8b-8192",
