@@ -134,19 +134,19 @@ export function TextForm(props)
                     <button onClick={state.text.length === 0 ? () => {} : formateText} style={{ all: "unset" }}>
                         <span className={state.text.length === 0 ? "border-0 p-2 bg-gray" : "btn btn-success"}>
                             <i className="fa-solid fa-wand-sparkles"></i>
-                            <button disabled={state.text.length === 0} style={btnTextColor()} className="border-0 p-0 ps-1 bg-transparent">Formate</button>
+                            <div disabled={state.text.length === 0} style={btnTextColor()} className="border-0 p-0 ps-1 bg-transparent">Formate</div>
                         </span>
                     </button>
                     <button onClick={state.text.length === 0 ? () => {} : copyToClipBoard} style={{ all: "unset" }}>
                         <span className={state.text.length === 0 ? "border-0 p-2 bg-gray" : "btn btn-primary"}>
                             <i className="fa-solid fa-clipboard"></i>
-                            <button disabled={state.text.length === 0} style={btnTextColor()} className="border-0 p-0 ps-1 bg-transparent">Copy</button>
+                            <div disabled={state.text.length === 0} style={btnTextColor()} className="border-0 p-0 ps-1 bg-transparent">Copy</div>
                         </span>
                     </button>
                     <button onClick={state.text.length === 0 ? () => {} : callAI} className="ai-btn" style={{ all: "unset" }}>
                         <span className={state.text.length === 0 ? "border-0 p-2 bg-gray" : "btn btn-info text-white"}>
                             <i className={`fa-solid fa-brain text-${state.text.length === 0 ? "dark" : "white"}`}></i>
-                            <button disabled={state.text.length === 0} style={btnTextColor()} className="border-0 p-0 ps-1 bg-transparent">AI</button>
+                            <div disabled={state.text.length === 0} style={btnTextColor()} className="border-0 p-0 ps-1 bg-transparent">AI</div>
                         </span>
                     </button>
                     <button className="spinner btn btn-info text-white" type="button" disabled style={{ display: "none" }}>
@@ -156,7 +156,7 @@ export function TextForm(props)
                     <button onClick={state.text.length === 0 ? () => {} : clearText} style={{ all: "unset" }}>
                         <span className={state.text.length === 0 ? "border-0 p-2 bg-gray" : "btn btn-danger"}>
                             <i className="fa-solid fa-broom"></i>
-                            <button disabled={state.text.length === 0} style={btnTextColor()} className="border-0 p-0 ps-1 bg-transparent">Clear</button>
+                            <div disabled={state.text.length === 0} style={btnTextColor()} className="border-0 p-0 ps-1 bg-transparent">Clear</div>
                         </span>
                     </button>
                 </div>
