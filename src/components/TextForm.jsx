@@ -162,7 +162,7 @@ export function TextForm(props)
 
             </section>
             <section className="my-3 text-white" style={{ display: state.text ? "block" : "none" }}>
-                <h5>Sample Text:</h5>
+                <h5>Formatted Text:</h5>
                 <p className="m-auto p-2 rounded-3 fs-4 text-break text-start" style={textAreaColor()}>{state.text}</p>
                 <h6 className="text-start my-3">Word: {state.wordCount} Sentence: {state.sentenceCount}</h6>
             </section>
