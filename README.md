@@ -4,4 +4,4 @@ Link: https://text-formatter-com.netlify.app
 
 # Discription
 
-TextFormatter is your go-to web app for all text formatting needs. Whether you're adjusting text for documents, web content, or any other purpose, our tools make it easy and efficient. Enjoy a seamless experience with our user-friendly interface! It has AI formatting, so you don't need to worry about spelling mistakes and grammar.
+TextFormatter is a powerful, user-friendly web app for all your text formatting needs. Whether you're preparing content for documents, websites, or social media, TextFormatter streamlines the process with ease. Featuring AI-powered text formatting, it automatically corrects spelling and grammar, saving you time and effort. Built with React, GROQ APIs, and custom prompts, it delivers a seamless and efficient text editing experience.
